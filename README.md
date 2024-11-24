@@ -48,13 +48,25 @@ Debes asegurarte de tener instaladas las siguientes dependencias en tu ordenador
 
    pip show requests
 
+### Instalación de la librería requests mediante el archivo requirements.txt:
+
+1. Abre la terminal o simbolo del sistema.
+   
+2. Accede a la carpeta donde está ubicado el archivo requirements.txt,
+
+   por ejemplo:  cd C:\Users\user\Documents\p2_meraki
+   
+4. Ejecuta el siguiente comando:
+   
+   pip install -r requirements.txt
+
 ### Como usar el codigo:
 
 1. Lo primero que debes saber es la ubicación y el nombre del archivo .py con el que estamos trabajando. En nuestro caso es p2meraki.py
    
 2. Abrir la terminal o simbolo del sistema.
    
-3. Accedere a la carpeta donde está ubicado el archivo, por ejemplo:  cd C:\Users\user\Documents\p2_meraki
+3. Accede a la carpeta donde está ubicado el archivo, por ejemplo:  cd C:\Users\user\Documents\p2_meraki
    
 4. En este punto, te recomiendo crear un entorno virtual de python para trabajar con mayor seguridad. Para ello debes ejecturar el siguiente comando:
    
