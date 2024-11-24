@@ -6,6 +6,17 @@ Este proyecto esta diseñado con Python y nos permite tener acceso a la API de m
 
 Estaremos trabajando directamente con la API publica de Meraki, por lo que accederemos a una información que es publica. 
 
+## Descripción del Script:
+
+Este codigo esta conformado por tres funciones principales: getOrganizations(), getOrganizationsDevices(org_id) y GetInventory(). Además, requiere el URL del API publica de Meraki y la API_KEY de acceso.
+
+- getOrganizations(): Esta funcion se encarga de acceder a la información de la organizacion a la cual se tiene acceso mediante la API_KEY. La información que es obtiene es: id, licesing, management, name y url.
+
+- getOrganizationsDevices(org_id): Esta función se encarga de obtener la información de los dispositivos que están conectados a una organización. Esta función requiere el id de la organización para poder obtener la información de los equipos.
+
+- GetInventory(): Se encarga de crear el archivo .csv con la información solicitada de los equipos. El archivo .csv es un inventario de todos los equipos de tipo "wireless" y "appliance" en todas las redes de la organización, y contiene: modelo del equipo, nombre, dirección MAC, dirección IP pública y de la LAN, número serial y status del dispositivo.
+
+
 ## Requisitos:
 
 Debes asegurarte de tener instaladas las siguientes dependencias en tu ordenador:
