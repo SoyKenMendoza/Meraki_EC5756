@@ -21,6 +21,7 @@ headers = {
 def getOrganizations():
 
     response = requests.request('GET',f"{url}/organizations", headers=headers, data = payload)
+    response.raise_for_status()
     return response.json()
 
 #Get Devices
@@ -28,6 +29,7 @@ def getOrganizations():
 def getOrganizationsDevices(org_id):
 
    response = requests.request('GET', f"{url}/organizations/{org_id}/devices", headers=headers, data = payload)
+   response.raise_for_status()
    return response.json()
 
 #Get Inventory
