@@ -17,5 +17,5 @@ headers = {
 }
 
 response = requests.request('GET', url, headers=headers, data = payload)
-
+response.raise_for_status()
 pprint(response.json())
