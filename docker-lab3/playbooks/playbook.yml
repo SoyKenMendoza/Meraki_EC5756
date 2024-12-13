@@ -1,0 +1,8 @@
+
+- name: Docker Practica 3
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Imprimir un mensaje en la consola
+      debug:
+        msg: "¡Hola! Este es un mensaje de prueba"
