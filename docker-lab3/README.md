@@ -1,10 +1,17 @@
-# Meraki_EC5756
+# Meraki, Ansible y Docker.
 
 ## Información del proyecto:
 
-Este proyecto esta diseñado con Python y nos permite tener acceso a la API de meraki para automatizar el proceso de inventario de dispositivos conectados a una organización.
+Este proyecto tiene como objetivo automatizar la ejecución de una consulta de acceso a la API de meraki para automatizar el proceso de inventario de dispositivos conectados a una organización y generar un archivo CSV cada 5 minutos, utilizando Docker para contenerizar la aplicación y garantizar su portabilidad y reproducibilidad.
 
 Estaremos trabajando directamente con la API publica de Meraki, por lo que accederemos a una información que es publica. 
+
+## Estructura del proyecto:
+
+- Dockerfile: Define la imagen Docker, incluyendo la instalación de dependencias y el punto de entrada de la aplicación.
+- docker-compose.yml: Define los servicios y volúmenes para ejecutar la aplicación utilizando Docker Compose.
+- p2meraki_inventory.py: Contiene el código Python principal que ejecuta la consulta y genera el CSV.
+- requirements.txt: Lista las dependencias de Python.
 
 ## Descripción del Script:
 
@@ -16,13 +23,15 @@ Este codigo esta conformado por tres funciones principales: getOrganizations(), 
 
 - GetInventory(): Se encarga de crear el archivo .csv con la información solicitada de los equipos. El archivo .csv es un inventario de todos los equipos de tipo "wireless" y "appliance" en todas las redes de la organización, y contiene: modelo del equipo, nombre, dirección MAC, dirección IP pública y de la LAN, número serial y status del dispositivo.
 
-
 ## Requisitos:
 
 Debes asegurarte de tener instaladas las siguientes dependencias en tu ordenador:
 
 - Python 3.
 - Las librería requests.
+- Ansible.
+- Docker.
+- Git.
 
 ## Instalación de Dependencias:
 
@@ -62,22 +71,22 @@ Debes asegurarte de tener instaladas las siguientes dependencias en tu ordenador
 
 ### Como usar el codigo:
 
-1. Lo primero que debes saber es la ubicación y el nombre del archivo .py con el que estamos trabajando. En nuestro caso es p2meraki.py
-   
-2. Abrir la terminal o simbolo del sistema.
-   
-3. Accede a la carpeta donde está ubicado el archivo, por ejemplo:  cd C:\Users\user\Documents\p2_meraki
-   
-4. En este punto, te recomiendo crear un entorno virtual de python para trabajar con mayor seguridad. Para ello debes ejecturar el siguiente comando:
-   
-   python -m venv nombre_entorno
-   
-5. Luego de creardo el entorno, debes activarlo con el comando a continuación:
+En el proyecto p2 la ejecución del codigo dependía de ejecutar p2meraki.py para descargar el inventario requerido. Ahora, al integrarlo con Docker seremos capaces de crear un contender que se ejecute en segundo plano y haga las consultas del inventario cada cinco (5) minutos, esto nos ayudará a mantener nuestro inventario siempre actualizado.
 
-   nombre_entorno\Scripts\activate
+1. Lo primero es abrir la terminal o simbolo del sistema.
+   
+2. Luego se debe clonar el repositorio de GitHub, puedes hacerlo mediante el comando:
 
-6. Ejecutar el archivo con:
+   git clone https://github.com/SoyKenMendoza/Meraki_EC5756
+    
+3. Accede a la carpeta donde está ubicado el archivo, por ejemplo:  cd C:\Users\user\Documents\Meraki_EC5756
+   
+4. Luego ejectuar el comando: docker-compose up -d
+   
+5. El comando anterior se encargará de buscar y ejecutar el archivo "docker-compose.yml". El cual a su vez se encargará de ejecutar el archivo Dockerfile para crear el contenedor de nuestra practica.
+   
+6. Si deseas navegar dentro de los archivos del contenedor puedes usar el comando:
 
-    python p2meraki.py
+   docker exec -it docker_p3 bash
 
-NOTA: Si aparece el siguiente error al ejecutar el archivo: "ModuleNotFoundError: No module named 'requests'", te recomiendo instalar la libreria request luego del paso 5. Es posible que no encuentre instalada directamente en tu entorno virtual de Python creado.
+   Esto te permitirá ingresar al contenedor como si estuvieras en una terminal dentro de él. Una vez dentro, puedes usar    comandos como ls para listar los archivos en un directorio específico, cd para cambiar de directorio y cualquier otro    comando de tu sistema operativo.
