@@ -1,5 +1,6 @@
 import requests
 import csv
+import time
 from pprint import pprint
 
 #Global Parameters
@@ -73,4 +74,8 @@ def GetInventory ():
 
 ##Main
 
-GetInventory ()
+while True:
+
+    GetInventory()
+    time.sleep(300)  
+
