@@ -1,8 +1,11 @@
 #Version de ubuntu base
 FROM ubuntu:latest
 
-#Carpeta donde se encuentras los archivos
+#Carpeta donde se encuentran los archivos
 WORKDIR /meraki_p3
+
+#Crea el volumen necesario para almacenar el archivo CSV
+VOLUME /meraki_p3_data
 
 #Instala pip y venv para Python 3
 RUN apt-get update && apt-get install -y python3-pip python3-venv
