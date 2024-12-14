@@ -1,0 +1,10 @@
+version: '3.7'
+
+volumes:
+  meraki_p3_data:
+  
+services:
+  meraki_p3:
+    build: .
+    volumes:
+      - meraki_p3_data:/meraki_p3_data
